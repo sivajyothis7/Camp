@@ -22,7 +22,8 @@
    "fieldname": "worker",
    "fieldtype": "Link",
    "label": "Worker",
-   "options": "Worker Profile"
+   "options": "Worker Profile",
+   "reqd": 1
   },
   {
    "fieldname": "vacation_out_date",
@@ -80,7 +81,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-04-11 10:48:00.161233",
+ "modified": "2025-04-11 14:50:39.019124",
  "modified_by": "Administrator",
  "module": "Camp",
  "name": "Worker Attendance",
