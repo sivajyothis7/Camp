@@ -7,6 +7,7 @@
  "field_order": [
   "worker",
   "worker_name",
+  "iqama_no",
   "status",
   "column_break_ndtb",
   "date",
@@ -52,11 +53,19 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Worker Name"
+  },
+  {
+   "fetch_from": "worker.iqama_number",
+   "fieldname": "iqama_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Iqama No"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-04-11 13:49:06.766865",
+ "modified": "2025-04-11 15:11:03.942425",
  "modified_by": "Administrator",
  "module": "Camp",
  "name": "Daily Attendance",

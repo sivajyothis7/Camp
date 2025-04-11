@@ -88,6 +88,7 @@ def auto_mark_attendance(doc, method):
         delete_existing_entries(doc.worker, vacation_start, vacation_end)
         create_attendance_entries(doc.worker, vacation_start, vacation_end, status="Vacation")
 
+    # NEW LOGIC: Auto-mark Absent from day after Check-out until end of month
     if doc.enable_check_out and check_out_date:
         year = check_out_date.year
         month = check_out_date.month
