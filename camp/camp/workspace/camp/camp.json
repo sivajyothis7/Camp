@@ -1,0 +1,61 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"kn1kLTFkZU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Masters</span>\",\"col\":12}},{\"id\":\"q4GYORk_k9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Worker Profile\",\"col\":3}},{\"id\":\"iA7RajOeO6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Worker Attendance\",\"col\":3}},{\"id\":\"CAoymfXKpv\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Attendance\",\"col\":3}},{\"id\":\"eVWBH0qzXb\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"uWCnTW0s2N\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports</b></span>\",\"col\":12}},{\"id\":\"916fdrQU-v\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Monthly Camp Attendance\",\"col\":3}}]",
+ "creation": "2025-04-11 13:36:04.404838",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "retail",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Camp",
+ "links": [],
+ "modified": "2025-04-11 13:37:54.474152",
+ "modified_by": "Administrator",
+ "module": "Camp",
+ "name": "Camp",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 23.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Monthly Camp Attendance",
+   "link_to": "Monthly Camp Attendance",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Worker Profile",
+   "link_to": "Worker Profile",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Daily Attendance",
+   "link_to": "Daily Attendance",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Worker Attendance",
+   "link_to": "Worker Attendance",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Camp"
+}
