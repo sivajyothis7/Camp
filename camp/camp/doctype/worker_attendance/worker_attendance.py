@@ -1,7 +1,7 @@
 from datetime import timedelta, datetime
-import calendar
 import frappe
 from frappe.model.document import Document
+
 
 class WorkerAttendance(Document):
     def validate(self):
@@ -67,38 +67,29 @@ def auto_mark_attendance(doc, method):
     else:
         end_date = today
 
+    # Delete and recreate present range
     delete_existing_entries(doc.worker, start_date, end_date)
     create_attendance_entries(doc.worker, start_date, end_date, status="Present")
 
+    # Handle vacation
+    if vacation_out_date and vacation_in_date:
+        vacation_start = vacation_out_date
+        vacation_end = vacation_in_date - timedelta(days=1)
+        delete_existing_entries(doc.worker, vacation_start, vacation_end)
+        create_attendance_entries(doc.worker, vacation_start, vacation_end, status="Vacation")
+
+    # Resume work after vacation
     if vacation_in_date:
         resume_start = vacation_in_date
-
         if doc.enable_check_out and check_out_date:
             resume_end = check_out_date
         else:
             resume_end = today
-
         delete_existing_entries(doc.worker, resume_start, resume_end)
         create_attendance_entries(doc.worker, resume_start, resume_end, status="Present")
 
-    if vacation_out_date and vacation_in_date:
-        vacation_start = vacation_out_date
-        vacation_end = vacation_in_date - timedelta(days=1)
-
-        delete_existing_entries(doc.worker, vacation_start, vacation_end)
-        create_attendance_entries(doc.worker, vacation_start, vacation_end, status="Vacation")
-
-    # NEW LOGIC: Auto-mark Absent from day after Check-out until end of month
-    if doc.enable_check_out and check_out_date:
-        year = check_out_date.year
-        month = check_out_date.month
-        last_day = calendar.monthrange(year, month)[1]
-        absent_start = check_out_date + timedelta(days=1)
-        absent_end = datetime(year, month, last_day).date()
-
-        if absent_start <= absent_end:
-            delete_existing_entries(doc.worker, absent_start, absent_end)
-            create_attendance_entries(doc.worker, absent_start, absent_end, status="Absent")
+    # Mark absent for rest of the month
+    mark_absents_for_month(doc.worker, check_in_date)
 
 
 def create_attendance_entries(worker, start_date, end_date, status="Present"):
@@ -119,3 +110,31 @@ def delete_existing_entries(worker, start_date, end_date):
         DELETE FROM `tabDaily Attendance`
         WHERE worker = %s AND date BETWEEN %s AND %s
     """, (worker, start_date, end_date))
+
+
+def mark_absents_for_month(worker, reference_date):
+    month = reference_date.month
+    year = reference_date.year
+    start = datetime(year, month, 1).date()
+    if month == 12:
+        end = datetime(year + 1, 1, 1).date() - timedelta(days=1)
+    else:
+        end = datetime(year, month + 1, 1).date() - timedelta(days=1)
+
+    existing_dates = set(row.date for row in frappe.get_all(
+        "Daily Attendance",
+        filters={"worker": worker, "date": ["between", [start, end]]},
+        fields=["date"]
+    ))
+
+    current = start
+    while current <= end:
+        if current not in existing_dates:
+            doc = frappe.get_doc({
+                "doctype": "Daily Attendance",
+                "worker": worker,
+                "date": current,
+                "status": "Absent"
+            })
+            doc.insert(ignore_permissions=True)
+        current += timedelta(days=1)
