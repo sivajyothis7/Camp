@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:serial_number",
+ "autoname": "field:iqama_number",
  "creation": "2025-04-11 08:43:54.825329",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -29,7 +29,9 @@
   {
    "fieldname": "iqama_number",
    "fieldtype": "Data",
-   "label": "Iqama Number"
+   "label": "Iqama Number",
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "category",
@@ -96,7 +98,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-04-11 11:12:17.957716",
+ "modified": "2025-04-11 16:15:55.116656",
  "modified_by": "Administrator",
  "module": "Camp",
  "name": "Worker Profile",
