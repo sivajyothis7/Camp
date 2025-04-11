@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Camp",
  "links": [],
- "modified": "2025-04-11 13:37:54.474152",
+ "modified": "2025-04-11 14:43:51.273992",
  "modified_by": "Administrator",
  "module": "Camp",
  "name": "Camp",
@@ -29,7 +29,7 @@
    "color": "Grey",
    "doc_view": "List",
    "label": "Monthly Camp Attendance",
-   "link_to": "Monthly Camp Attendance",
+   "link_to": "Attendance Report",
    "type": "Report"
   },
   {

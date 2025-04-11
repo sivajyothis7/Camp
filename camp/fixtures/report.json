@@ -8347,6 +8347,36 @@
   "javascript": null,
   "json": null,
   "letter_head": "",
+  "modified": "2025-04-11 14:42:41.565215",
+  "module": "Camp",
+  "name": "Attendance Report",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Worker Profile",
+  "reference_report": null,
+  "report_name": "Attendance Report",
+  "report_script": null,
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Attendance Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "System Manager"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "Yes",
+  "javascript": null,
+  "json": null,
+  "letter_head": "",
   "modified": "2025-04-11 11:10:33.404112",
   "module": "Camp",
   "name": "Monthly Camp Attendance",
