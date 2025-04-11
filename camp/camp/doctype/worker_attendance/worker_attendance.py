@@ -21,7 +21,7 @@ class WorkerAttendance(Document):
             "Worker Attendance",
             {
                 "worker": self.worker,
-                "docstatus": ["<", 2],  
+                "docstatus": ["<", 2],
                 "name": ["!=", self.name],
                 "check_in_date": ["between", [f"{year}-{month:02d}-01", f"{year}-{month:02d}-31"]],
             }
@@ -81,11 +81,11 @@ def auto_mark_attendance(doc, method):
         create_attendance_entries(doc.worker, resume_start, resume_end, status="Present")
 
     if vacation_out_date and vacation_in_date:
-        absent_start = vacation_out_date
-        absent_end = vacation_in_date - timedelta(days=1)
+        vacation_start = vacation_out_date
+        vacation_end = vacation_in_date - timedelta(days=1)
 
-        delete_existing_entries(doc.worker, absent_start, absent_end)
-        create_attendance_entries(doc.worker, absent_start, absent_end, status="Absent")
+        delete_existing_entries(doc.worker, vacation_start, vacation_end)
+        create_attendance_entries(doc.worker, vacation_start, vacation_end, status="Vacation")
 
 
 def create_attendance_entries(worker, start_date, end_date, status="Present"):

@@ -39,7 +39,8 @@ def execute(filters=None):
     ]
 
     workers = frappe.get_all("Worker Profile", fields=[
-        "name", "worker_name", "iqama_number", "category", "job_title", "nationality", "per_day_food_rate", "per_day_rent"
+        "name", "worker_name", "iqama_number", "category",
+        "job_title", "nationality", "per_day_food_rate", "per_day_rent"
     ])
 
     data = []
@@ -64,9 +65,9 @@ def execute(filters=None):
 
             mark = ""
             if status == "Present":
-                mark = "Y"
+                mark = "P"
                 present += 1
-            elif status == "Absent":
+            elif status == "Vacation":
                 mark = "V"
                 vacation += 1
             else:
@@ -78,7 +79,9 @@ def execute(filters=None):
         row["present"] = present
         row["vacation"] = vacation
         row["absent"] = absent
-        row["amount"] = round((worker.per_day_food_rate or 0) + (worker.per_day_rent or 0)) * present
+
+        rate = (worker.per_day_food_rate or 0) + (worker.per_day_rent or 0)
+        row["amount"] = round(rate * present)
 
         data.append(row)
 
