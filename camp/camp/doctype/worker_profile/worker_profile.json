@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:serial_number",
+ "creation": "2025-04-11 08:43:54.825329",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "serial_number",
+  "designation",
+  "iqama_number",
+  "nationality",
+  "camp_location",
+  "per_day_food_rate",
+  "remarks",
+  "column_break_yfmo",
+  "worker_name",
+  "job_title",
+  "category",
+  "vacation",
+  "per_day_rent"
+ ],
+ "fields": [
+  {
+   "fieldname": "worker_name",
+   "fieldtype": "Data",
+   "label": "Name"
+  },
+  {
+   "fieldname": "iqama_number",
+   "fieldtype": "Data",
+   "label": "Iqama Number"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "camp_location",
+   "fieldtype": "Link",
+   "label": "Camp Location",
+   "options": "Camp Location"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_yfmo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designations"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Link",
+   "label": "Job Title",
+   "options": "Job Title"
+  },
+  {
+   "fieldname": "vacation",
+   "fieldtype": "Select",
+   "label": "Vacation",
+   "options": "Yes\nNo"
+  },
+  {
+   "fieldname": "per_day_food_rate",
+   "fieldtype": "Currency",
+   "label": "Per Day Food Rate"
+  },
+  {
+   "fieldname": "per_day_rent",
+   "fieldtype": "Currency",
+   "label": "Per Day Rent"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Serial Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "Nationality"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-04-11 11:12:17.957716",
+ "modified_by": "Administrator",
+ "module": "Camp",
+ "name": "Worker Profile",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

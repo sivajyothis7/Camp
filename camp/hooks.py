@@ -129,6 +129,12 @@ app_license = "mit"
 # 		"on_trash": "method"
 # 	}
 # }
+doc_events = {
+    "Worker Attendance": {
+        "after_insert": "camp.camp.doctype.worker_attendance.worker_attendance.auto_mark_attendance",
+        "on_update": "camp.camp.doctype.worker_attendance.worker_attendance.auto_mark_attendance"
+    }
+}
 
 # Scheduled Tasks
 # ---------------

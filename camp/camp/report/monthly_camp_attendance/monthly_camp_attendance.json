@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2025-04-11 11:10:33.404112",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "",
+ "letterhead": null,
+ "modified": "2025-04-11 11:10:33.404112",
+ "modified_by": "Administrator",
+ "module": "Camp",
+ "name": "Monthly Camp Attendance",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Worker Profile",
+ "report_name": "Monthly Camp Attendance",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

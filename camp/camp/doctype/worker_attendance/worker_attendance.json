@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-04-11 09:50:25.099892",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "worker",
+  "worker_name",
+  "vacation_out_date",
+  "vacation_in_date",
+  "column_break_hpvk",
+  "enable_check_in",
+  "check_in_date",
+  "enable_check_out",
+  "check_out_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "worker",
+   "fieldtype": "Link",
+   "label": "Worker",
+   "options": "Worker Profile"
+  },
+  {
+   "fieldname": "vacation_out_date",
+   "fieldtype": "Date",
+   "label": "Vacation Out Date"
+  },
+  {
+   "fieldname": "vacation_in_date",
+   "fieldtype": "Date",
+   "label": "Vacation In Date"
+  },
+  {
+   "fieldname": "column_break_hpvk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_check_in",
+   "fieldtype": "Check",
+   "label": "Enable Check In"
+  },
+  {
+   "depends_on": "eval:doc.enable_check_in\n",
+   "fieldname": "check_in_date",
+   "fieldtype": "Date",
+   "label": "Check In Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_check_out",
+   "fieldtype": "Check",
+   "label": "Enable Check Out"
+  },
+  {
+   "depends_on": "eval:doc.enable_check_out\n",
+   "fieldname": "check_out_date",
+   "fieldtype": "Date",
+   "label": "Check Out Date"
+  },
+  {
+   "fetch_from": "worker.worker_name",
+   "fieldname": "worker_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Worker Name"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "WA-.YYYY.-.#####",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-04-11 10:48:00.161233",
+ "modified_by": "Administrator",
+ "module": "Camp",
+ "name": "Worker Attendance",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
