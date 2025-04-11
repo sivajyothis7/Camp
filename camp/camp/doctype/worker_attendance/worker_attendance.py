@@ -1,4 +1,5 @@
 from datetime import timedelta, datetime
+import calendar
 import frappe
 from frappe.model.document import Document
 
@@ -86,6 +87,17 @@ def auto_mark_attendance(doc, method):
 
         delete_existing_entries(doc.worker, vacation_start, vacation_end)
         create_attendance_entries(doc.worker, vacation_start, vacation_end, status="Vacation")
+
+    if doc.enable_check_out and check_out_date:
+        year = check_out_date.year
+        month = check_out_date.month
+        last_day = calendar.monthrange(year, month)[1]
+        absent_start = check_out_date + timedelta(days=1)
+        absent_end = datetime(year, month, last_day).date()
+
+        if absent_start <= absent_end:
+            delete_existing_entries(doc.worker, absent_start, absent_end)
+            create_attendance_entries(doc.worker, absent_start, absent_end, status="Absent")
 
 
 def create_attendance_entries(worker, start_date, end_date, status="Present"):
