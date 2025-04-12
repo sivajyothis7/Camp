@@ -36,7 +36,7 @@ frappe.query_reports["Attendance Report"] = {
         const fieldname = column.fieldname;
 
         if (fieldname && /^day_\d+$/.test(fieldname)) {
-            if (value === "A") {
+            if (value === "O") {
                 return `<span style="color: red !important; font-weight: bold;">${value}</span>`;
             } else if (value === "P") {
                 return `<span style="color: green !important; font-weight: bold;">${value}</span>`;

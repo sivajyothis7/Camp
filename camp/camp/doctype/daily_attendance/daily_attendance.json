@@ -9,6 +9,9 @@
   "worker_name",
   "iqama_no",
   "status",
+  "worker_attendance",
+  "check_in_date",
+  "check_out_date",
   "column_break_ndtb",
   "date",
   "remarks"
@@ -61,11 +64,29 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Iqama No"
+  },
+  {
+   "fieldname": "worker_attendance",
+   "fieldtype": "Link",
+   "label": "Worker Attendance",
+   "options": "Worker Attendance"
+  },
+  {
+   "fetch_from": "worker_attendance.check_in_date",
+   "fieldname": "check_in_date",
+   "fieldtype": "Date",
+   "label": "Check In Date"
+  },
+  {
+   "fetch_from": "worker_attendance.check_out_date",
+   "fieldname": "check_out_date",
+   "fieldtype": "Date",
+   "label": "Check Out Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-04-11 15:11:03.942425",
+ "modified": "2025-04-12 13:09:17.519754",
  "modified_by": "Administrator",
  "module": "Camp",
  "name": "Daily Attendance",

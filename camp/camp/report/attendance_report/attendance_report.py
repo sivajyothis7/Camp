@@ -1,6 +1,3 @@
-# Copyright (c) 2025, siva and contributors
-# For license information, please see license.txt
-
 import frappe
 import calendar
 from datetime import datetime
@@ -21,6 +18,11 @@ def execute(filters=None):
         {"label": "Category", "fieldname": "category", "fieldtype": "Data"},
         {"label": "Job Title", "fieldname": "job_title", "fieldtype": "Data"},
         {"label": "Nationality", "fieldname": "nationality", "fieldtype": "Data"},
+        {"label": "Company", "fieldname": "company", "fieldtype": "Data"},  
+        {"label": "Check In", "fieldname": "check_in", "fieldtype": "Data"},
+        {"label": "Check Out", "fieldname": "check_out", "fieldtype": "Data"},
+
+
     ]
 
     for day in day_range:
@@ -40,7 +42,7 @@ def execute(filters=None):
 
     workers = frappe.get_all("Worker Profile", fields=[
         "name", "worker_name", "iqama_number", "category",
-        "job_title", "nationality", "per_day_food_rate", "per_day_rent"
+        "job_title", "nationality", "company", "per_day_food_rate", "per_day_rent"
     ])
 
     data = []
@@ -52,9 +54,11 @@ def execute(filters=None):
             "category": worker.category,
             "job_title": worker.job_title,
             "nationality": worker.nationality,
+            "company": worker.company,  
         }
 
         present = vacation = absent = 0
+        check_in_time = check_out_time = ""
 
         for day in day_range:
             date_str = f"{year}-{month:02d}-{day:02d}"
@@ -62,6 +66,16 @@ def execute(filters=None):
                 "worker": worker.name,
                 "date": date_str
             }, "status")
+
+            check_in = frappe.db.get_value("Daily Attendance", {
+                "worker": worker.name,
+                "date": date_str
+            }, "check_in_date")
+
+            check_out = frappe.db.get_value("Daily Attendance", {
+                "worker": worker.name,
+                "date": date_str
+            }, "check_out_date")
 
             mark = ""
             if status == "Present":
@@ -71,10 +85,13 @@ def execute(filters=None):
                 mark = "V"
                 vacation += 1
             else:
-                mark = "A"
+                mark = "O"
                 absent += 1
 
             row[f"day_{day}"] = mark
+
+            row["check_in"] = check_in if check_in else ""
+            row["check_out"] = check_out if check_out else ""
 
         row["present"] = present
         row["vacation"] = vacation
