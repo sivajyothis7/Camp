@@ -19,8 +19,8 @@ def execute(filters=None):
         {"label": "Job Title", "fieldname": "job_title", "fieldtype": "Data"},
         {"label": "Nationality", "fieldname": "nationality", "fieldtype": "Data"},
         {"label": "Company", "fieldname": "company", "fieldtype": "Data"},  
-        {"label": "Check In", "fieldname": "check_in", "fieldtype": "Data"},
-        {"label": "Check Out", "fieldname": "check_out", "fieldtype": "Data"},
+        {"label": "Check In", "fieldname": "check_in", "fieldtype": "Date"},
+        {"label": "Check Out", "fieldname": "check_out", "fieldtype": "Date"},
 
 
     ]
