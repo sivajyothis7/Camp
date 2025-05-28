@@ -1,0 +1,173 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{iqama_number}-{###}",
+ "creation": "2025-05-26 08:38:57.116958",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "iqama_number",
+  "designation",
+  "category",
+  "log_type",
+  "date",
+  "camp_location",
+  "column_break_zigb",
+  "worker_name",
+  "job_title",
+  "nationality",
+  "worker_type",
+  "vacation_managemen_section",
+  "vacation_reason",
+  "column_break_byem",
+  "rates_section",
+  "per_day_food_rate",
+  "column_break_wfxn",
+  "per_day_rent",
+  "section_break_h7mt",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_h7mt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Worker Checkin",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "iqama_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Iqama Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designations"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "camp_location",
+   "fieldtype": "Link",
+   "label": "Camp Location",
+   "options": "Camp Location"
+  },
+  {
+   "fieldname": "column_break_zigb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "worker_name",
+   "fieldtype": "Data",
+   "label": "Worker Name"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "label": "Job Title"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "label": "Nationality",
+   "options": "Country"
+  },
+  {
+   "fieldname": "worker_type",
+   "fieldtype": "Link",
+   "label": "Worker Type",
+   "options": "Worker Type"
+  },
+  {
+   "fieldname": "vacation_managemen_section",
+   "fieldtype": "Section Break",
+   "label": "Vacation Management"
+  },
+  {
+   "depends_on": "eval:doc.vacation_start_date",
+   "fieldname": "vacation_reason",
+   "fieldtype": "Small Text",
+   "label": "Vacation Reason"
+  },
+  {
+   "fieldname": "column_break_byem",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "rates_section",
+   "fieldtype": "Section Break",
+   "label": "Rates"
+  },
+  {
+   "fieldname": "per_day_food_rate",
+   "fieldtype": "Currency",
+   "label": "Per Day Food Rate"
+  },
+  {
+   "fieldname": "column_break_wfxn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "per_day_rent",
+   "fieldtype": "Currency",
+   "label": "Per Day Rent"
+  },
+  {
+   "fieldname": "log_type",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Log Type",
+   "options": "\nIN\nOUT\nVacation Start\nVacation End",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-05-27 19:52:24.505890",
+ "modified_by": "Administrator",
+ "module": "Camp",
+ "name": "Worker Checkin",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
