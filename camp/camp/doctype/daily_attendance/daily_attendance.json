@@ -12,7 +12,8 @@
   "camp_location",
   "column_break_ndtb",
   "date",
-  "reference"
+  "reference",
+  "customer"
  ],
  "fields": [
   {
@@ -62,11 +63,17 @@
    "fieldtype": "Link",
    "label": "Reference",
    "options": "Worker Checkin"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-27 19:49:38.385829",
+ "modified": "2025-06-09 15:06:52.031451",
  "modified_by": "Administrator",
  "module": "Camp",
  "name": "Daily Attendance",

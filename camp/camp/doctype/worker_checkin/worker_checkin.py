@@ -1,5 +1,6 @@
 # Copyright (c) 2025, siva and contributors
 # For license information, please see license.txt
+
 import frappe
 from frappe.model.document import Document
 
@@ -48,6 +49,34 @@ class WorkerCheckin(Document):
                         title="Missing OUT"
                     )
 
+        if self.log_type == "OUT":
+            last_in = frappe.get_all(
+                "Worker Checkin",
+                filters={
+                    "iqama_number": self.iqama_number,
+                    "log_type": "IN",
+                    "docstatus": 1
+                },
+                order_by="date desc",
+                limit_page_length=1,
+                fields=["date"]
+            )
+            if not last_in:
+                frappe.throw("Cannot check OUT without a previous IN.")
+
+            last_out = frappe.get_all(
+                "Worker Checkin",
+                filters={
+                    "iqama_number": self.iqama_number,
+                    "log_type": "OUT",
+                    "date": [">", last_in[0].date],
+                    "docstatus": 1
+                },
+                fields=["date"]
+            )
+            if last_out:
+                frappe.throw(f"Previous IN on {last_in[0].date} is already matched with an OUT. Cannot check OUT again.")
+
         if self.log_type == "Vacation Start":
             unmatched_vac_starts = frappe.get_all(
                 "Worker Checkin",
@@ -69,9 +98,7 @@ class WorkerCheckin(Document):
             )
             unmatched_count = len(unmatched_vac_starts) - len(unmatched_vac_ends)
             if unmatched_count > 0:
-                frappe.throw(
-                    "You already have an unmatched 'Vacation Start'. Please create a 'Vacation End' first."
-                )
+                frappe.throw("You already have an unmatched 'Vacation Start'. Please create a 'Vacation End' first.")
 
         if self.log_type == "Vacation End":
             vac_starts = frappe.get_all(
@@ -140,6 +167,7 @@ class WorkerCheckin(Document):
 
         attendance = frappe.new_doc("Daily Attendance")
         attendance.iqama_no = self.iqama_number
+        attendance.customer = self.customer
         attendance.worker = self.worker_name
         attendance.date = self.date
         attendance.camp_location = self.camp_location
